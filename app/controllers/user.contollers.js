@@ -45,3 +45,24 @@ exports.login = async (req, res) => {
         res.status(400).send('Password does not match');
     }
 }
+
+//Delete a User
+exports.delete = (req, res) => {
+    User.findOneAndDelete(req.params.userId).then(user => {
+        if (!user) {
+            return res.status(404).send({
+                message: "User not found with id " + req.params.userId
+            });
+        }
+        res.send({ message: "User deleted successfully!" });
+    }).catch(err => {
+        if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).send({
+                message: "User not found with id " + req.params.userId
+            });
+        }
+        return res.status(500).send({
+            message: "Could not delete user with id " + req.params.userId
+        });
+    });
+}

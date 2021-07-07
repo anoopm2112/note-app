@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true })) // parse requests of content-
 app.use(bodyParser.json()) // parse requests of content-type - application/json
 app.use(cors()) // Use this after the variable declaration
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log('Server running on 5000 started');
 });
 
