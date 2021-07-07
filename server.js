@@ -11,7 +11,7 @@ app.use(bodyParser.json()) // parse requests of content-type - application/json
 app.use(cors()) // Use this after the variable declaration
 
 app.listen(process.env.PORT, () => {
-    console.log('Server running on 5000');
+    console.log('Server running on 5000 started');
 });
 
 const authRoute = require('./app/routes/user.routes');
